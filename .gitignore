@@ -1,0 +1,9 @@
+# Ignore all dotted files
+**/.*
+# Ignore all dotted folders
+**.*/
+# Except for the .gitignore file itself, which needs to be tracked
+!/.gitignore
+incrementalSave/
+__pycache__/
+*.py[cod]

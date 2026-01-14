@@ -1,0 +1,849 @@
+global proc shelf_Hsunami () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "pm.openFile(pm.sceneName(), f=1)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "pm.openFile(pm.sceneName(), f=1)" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "reopen" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "pm.openFile(pm.sceneName(), f=1)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "icon maker" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "close all external windows" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Make_Maya_Shelf_Icon.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Make_Maya_Shelf_Icon.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import MayaIconMaker as mim\nreload(mim.MayaIconMakerUI)\nreload(mim.IconGenerator)\nmim.MayaIconMakerUI.main()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Kill Turtle" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "KIll the Turtle" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/KillTurtle.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/KillTurtle.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "if cmds.objExists('TurtleDefaultBakeLayer'):\n    mel.eval('ilrClearScene')\ncmds.unloadPlugin('Turtle', f=1)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "import Aardvark as ark\nark.aardvarkUI.main()" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Aardvark" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/aardvarkIcon.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/aardvarkIcon.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import Aardvark2019 as ark\nreload( ark.aardvarkUI2019 )\nreload( ark.AvatarAssembly )\narkUI = ark.aardvarkUI2019.main()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Toggle HUD" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Toggle Unit Display" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/HUD_ON or OFF__.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/HUD_ON or OFF__.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "toggle_hud()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Toggle working units between cm and m" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Toggle working units between cm and m" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.061144 0.061144 0.061144 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Toggle_CM  M__.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Toggle_CM  M__.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.toggle_cm_m()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "delete all layers" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Delete Layers" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/delete_layers.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/delete_layers.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.delete_all_layers()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Set Frame Range" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Set Frame Range" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Set_Frame_Range_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Set_Frame_Range_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.set_frame_range()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Rename File Nodes to match file" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Rename File Nodes to match file" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Rename_File_Nodes_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Rename_File_Nodes_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.rename_file_nodes()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "remove refs from selection" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "remove refs from selection" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Remove_Refs_From_Selected.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Remove_Refs_From_Selected.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "refs = []\nfor sel in cmds.ls(sl=1):\n    if cmds.referenceQuery( sel, f=1 ) not in refs:\n        refs.append( cmds.referenceQuery(sel, f=1) )\n\nfor refFile in refs:\n    try:\n        cmds.file(refFile, rr=1)\n    except:\n        refParentFile = cmds.referenceQuery( cmds.file(refFile, q=1, rfn=1), p=1, f=1 )\n        cmds.file(refParentFile, rr=1)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "List all file paths" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "List all file paths" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/List all_file paths__.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/List all_file paths__.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "fileList = cmds.ls(type = \"file\")\ni = 1\nfor f in fileList:\n    fPath = cmds.getAttr(f+\".fileTextureName\")\n    print i, fPath\n    i += 1" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Edit the references for the current scene" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Reference Editor" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Reference_Editor__.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Reference_Editor__.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "ReferenceEditor" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Component Editor" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Component Editor" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Component_Editor__.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Component_Editor__.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "ComponentEditor" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "File Path Editor" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "File Path Editor" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/File_Path_Editor_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/File_Path_Editor_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "FilePathEditor" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Connection Editor" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Connection Editor" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "CE" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Connection_Editor__.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Connection_Editor__.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "ConnectionEditor" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Namespace Editor" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Namespace Editor" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "NE" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Namespace_Editor__.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Namespace_Editor__.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "NamespaceEditor" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "import hh_utils as hh\nreload(hh)\nhh.fileinfo_to_clipboard(\"scene\")" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import hh_utils as hh\nreload(hh)\nhh.fileinfo_to_clipboard(\"scene..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "fil2clip" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import hh_utils as hh\nreload(hh)\nhh.fileinfo_to_clipboard(\"scene\")" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    $gBuffStr = `toolButton -style iconOnly -doubleClickCommand "toolPropertyWindow" -cl toolCluster `;
+    $gBuffStr1 = `    artSelectCtx
+        -image1 "vacantCell.png" 
+        -image2 "vacantCell.png" 
+        -image3 "vacantCell.png" 
+        -tangentOutline 1
+        -surfaceConformedBrushVertices 0
+        -record 0
+        -importreassign 0
+        -selectclonesource 0
+        -preserveclonesource 1
+        -dynclonemode 1
+        -pickColor 0
+        -expandfilename 0
+        -usepressure 0
+        -reflectionaboutorigin 0
+        -reflection 0
+        -projective 0
+        -showactive 1
+        -brushfeedback 1
+        -outwhilepaint 0
+        -outline 1
+        -accopacity 0
+        -brushalignment 1
+        -exportaspectratio 1
+        -stampDepth 0.5
+        -stampSpacing 0.1
+        -screenRadius 1
+        -worldRadius 1
+        -lowerradius 0.001
+        -opacity 1
+        -reflectionaxis "x" 
+        -exportfiletype "IFF" 
+        -exportfilemode "luminance" 
+        -importfilemode "luminance" 
+        -strokesmooth "spline" 
+        -mappressure "Opacity" 
+        -paintmode "tangent" 
+        -paintoperationtype "Paint" 
+        -dragSlider "none" 
+        -radius 1
+        -stampProfile "poly" 
+        -exportfilesizex 256
+        -exportfilesizey 256
+        -selectop "select" 
+        -addselection 1
+        -importthreshold 0.5
+`;
+    toolButton -edit -tool $gBuffStr1 -toolImage1 $gBuffStr1 "artSelect.png" $gBuffStr;
+    toolButton -edit -tool $gBuffStr1 $gBuffStr;
+
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Wing IDE" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Wing IDE" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Wing_IDE__.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Wing_IDE__.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import wingdbstub\nwingdbstub.Ensure()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "open folder of current scene" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import os; os.startfile( pm.sceneName().dirname().truepath() )" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "OpFldr" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import os; os.startfile( pm.sceneName().dirname().truepath() )" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "remove unknown plugin nodes" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "for p in pm.unknownPlugin( q=1, l=1 ):\n    try:\n        pm.unkno..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "plugin" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "for p in pm.unknownPlugin( q=1, l=1 ):\n    try:\n        pm.unknownPlugin( p, r=1 )\n    except:\n        pass\npm.unknownPlugin( q=1, l=1 )" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "hhu.delete_all_namespaces()" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "hhu.delete_all_namespaces()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "delNS" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.delete_all_namespaces()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "sel = pm.selected()[0]" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "sel = pm.selected()[0]" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "SEL" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "sel = pm.selected()[0]" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "import maya.cmds as cmds\n\nlimbs = {'arm': ('upperArm', 'lowerArm', 'hand'), 'leg': ('thigh', 'calf', 'foot')}\nside_naming = 'suffix'\n\ndef switcher(sel, limb_ctrl):\n    splitlength = len(limb_ctrl.split('_'))\n    prefix = '' if splitlength == 3 else f'{sel.split(\"_\")[0]}_'\n    limb = limb_ctrl.replace('_Ctrl', '')\n    limb_type = limb.split('_')[0]\n    side = limb.split('_')[1]\n    namespace = ''\n    if cmds.getAttr(f'{limb_ctrl}.IKFK_Mode') == 0:\n        # switch to IK\n        print(f'{prefix}')\n        endlimb_L_FK_Ctrl_pos = cmds.xform(f'{prefix}{limbs[limb_type][2]}_{side}_FK_Ctrl', q=True, m=True, ws=True)\n        pv_pos = cmds.xform(f'{limb}_PV_loc', q=True, m=True, ws=True)\n\n        limb_L_IK_Ctrl = cmds.ls(f'{limb}_IK_Ctrl')[0]\n        limb_L_poleVec_Ctrl = cmds.ls(f'{limb}_poleVec_Ctrl')[0]\n\n        cmds.xform(limb_L_IK_Ctrl, m=endlimb_L_FK_Ctrl_pos, ws=True)\n        cmds.xform(limb_L_poleVec_Ctrl, m=pv_pos, ws=True)\n\n        cmds.setAttr(f'{limb_ctrl}.IKFK_Mode', 1)\n\n        # cmds.select(limb_ctrl, r=1)\n    elif cmds.getAttr(f'{limb_ctrl}.IKFK_Mode') == 1:\n        # switch to FK\n        firstlimb_pos = cmds.xform(f'{prefix}{limbs[limb_type][0]}_{side}', q=True, m=True, ws=True)\n        midlimb_pos = cmds.xform(f'{prefix}{limbs[limb_type][1]}_{side}', q=True, m=True, ws=True)\n        endlimb_pos = cmds.xform(f'{prefix}{limbs[limb_type][2]}_{side}', q=True, m=True, ws=True)\n\n        firstlimb_L_FK_Ctrl = cmds.ls(f'{prefix}{limbs[limb_type][0]}_{side}_FK_Ctrl')[0]\n        midlimb_L_FK_Ctrl = cmds.ls(f'{prefix}{limbs[limb_type][1]}_{side}_FK_Ctrl')[0]\n        endlimb_L_FK_Ctrl = cmds.ls(f'{prefix}{limbs[limb_type][2]}_{side}_FK_Ctrl')[0]\n\n        cmds.xform(firstlimb_L_FK_Ctrl, m=firstlimb_pos, ws=True)\n        cmds.xform(midlimb_L_FK_Ctrl, m=midlimb_pos, ws=True)\n        cmds.xform(endlimb_L_FK_Ctrl, m=endlimb_pos, ws=True)\n\n        cmds.setAttr(f'{limb_ctrl}.IKFK_Mode', 0)\n\n        # cmds.select(limb_ctrl, r=1)\n\n\ndef main():\n    if cmds.ls(sl=1):\n        try:\n            # switcher(cmds.ls(sl=1)[0])\n            switched_limbs = []\n            limb_ctrl = None\n            for sel in cmds.ls(sl=1):\n                # make sure every selection is a valid controller\n                if cmds.attributeQuery('IKFK_Mode', n=sel, ex=True) or \\\n                   cmds.attributeQuery('controller', n=sel, ex=True):\n                    limb_ctrl = cmds.getAttr(f'{sel}.controller')  # limb control selected\n                    if limb_ctrl not in switched_limbs:\n                        switcher(sel, limb_ctrl)\n                        switched_limbs.append(limb_ctrl)\n                else:\n                    print(f'Selection {sel} is not a switchable controller')\n            cmds.select(switched_limbs, r=1)\n        except:\n            print(f'Invalid IKFK switchable controller {cmds.ls(sl=1)[0]} selected!')\n\n\nif __name__ == \"__main__\":\n    main()" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import maya.cmds as cmds\n\nlimbs = {'arm': ('upperArm', 'lowerArm..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds\n\nlimbs = {'arm': ('upperArm', 'lowerArm', 'hand'), 'leg': ('thigh', 'calf', 'foot')}\nside_naming = 'suffix'\n\ndef switcher(sel, limb_ctrl):\n    splitlength = len(limb_ctrl.split('_'))\n    prefix = '' if splitlength == 3 else f'{sel.split(\"_\")[0]}_'\n    limb = limb_ctrl.replace('_Ctrl', '')\n    limb_type = limb.split('_')[0]\n    side = limb.split('_')[1]\n    namespace = ''\n    if cmds.getAttr(f'{limb_ctrl}.IKFK_Mode') == 0:\n        # switch to IK\n        print(f'{prefix}')\n        endlimb_L_FK_Ctrl_pos = cmds.xform(f'{prefix}{limbs[limb_type][2]}_{side}_FK_Ctrl', q=True, m=True, ws=True)\n        pv_pos = cmds.xform(f'{limb}_PV_loc', q=True, m=True, ws=True)\n\n        limb_L_IK_Ctrl = cmds.ls(f'{limb}_IK_Ctrl')[0]\n        limb_L_poleVec_Ctrl = cmds.ls(f'{limb}_poleVec_Ctrl')[0]\n\n        cmds.xform(limb_L_IK_Ctrl, m=endlimb_L_FK_Ctrl_pos, ws=True)\n        cmds.xform(limb_L_poleVec_Ctrl, m=pv_pos, ws=True)\n\n        cmds.setAttr(f'{limb_ctrl}.IKFK_Mode', 1)\n\n        # cmds.select(limb_ctrl, r=1)\n    elif cmds.getAttr(f'{limb_ctrl}.IKFK_Mode') == 1:\n        # switch to FK\n        firstlimb_pos = cmds.xform(f'{prefix}{limbs[limb_type][0]}_{side}', q=True, m=True, ws=True)\n        midlimb_pos = cmds.xform(f'{prefix}{limbs[limb_type][1]}_{side}', q=True, m=True, ws=True)\n        endlimb_pos = cmds.xform(f'{prefix}{limbs[limb_type][2]}_{side}', q=True, m=True, ws=True)\n\n        firstlimb_L_FK_Ctrl = cmds.ls(f'{prefix}{limbs[limb_type][0]}_{side}_FK_Ctrl')[0]\n        midlimb_L_FK_Ctrl = cmds.ls(f'{prefix}{limbs[limb_type][1]}_{side}_FK_Ctrl')[0]\n        endlimb_L_FK_Ctrl = cmds.ls(f'{prefix}{limbs[limb_type][2]}_{side}_FK_Ctrl')[0]\n\n        cmds.xform(firstlimb_L_FK_Ctrl, m=firstlimb_pos, ws=True)\n        cmds.xform(midlimb_L_FK_Ctrl, m=midlimb_pos, ws=True)\n        cmds.xform(endlimb_L_FK_Ctrl, m=endlimb_pos, ws=True)\n\n        cmds.setAttr(f'{limb_ctrl}.IKFK_Mode', 0)\n\n        # cmds.select(limb_ctrl, r=1)\n\n\ndef main():\n    if cmds.ls(sl=1):\n        try:\n            # switcher(cmds.ls(sl=1)[0])\n            switched_limbs = []\n            limb_ctrl = None\n            for sel in cmds.ls(sl=1):\n                # make sure every selection is a valid controller\n                if cmds.attributeQuery('IKFK_Mode', n=sel, ex=True) or \\\n                   cmds.attributeQuery('controller', n=sel, ex=True):\n                    limb_ctrl = cmds.getAttr(f'{sel}.controller')  # limb control selected\n                    if limb_ctrl not in switched_limbs:\n                        switcher(sel, limb_ctrl)\n                        switched_limbs.append(limb_ctrl)\n                else:\n                    print(f'Selection {sel} is not a switchable controller')\n            cmds.select(switched_limbs, r=1)\n        except:\n            print(f'Invalid IKFK switchable controller {cmds.ls(sl=1)[0]} selected!')\n\n\nif __name__ == \"__main__\":\n    main()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 

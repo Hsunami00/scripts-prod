@@ -1,0 +1,1385 @@
+global proc shelf_Rigging () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Lock All Skin Weights" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Lock All Skin Weights" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/lock_weights.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/lock_weights.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.lock_all_skin_weights()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Unlock All Skin Weights" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Unlock All Skin Weights" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/unlock_weights.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/unlock_weights.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.unlock_all_skin_weights()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Curve Creator" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Curve Creator" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "curves" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import hh_autorig.widgets.widgets_UI as wui\nwidgetsUI = wui.main()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "select shape  then transform node" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Parent shape node" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/parent_under _shape_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/parent_under _shape_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "cmds.parent(s=1, r=1)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Skel BindPose" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Set to bind pose" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Set to_Bind_Pose_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Set to_Bind_Pose_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "for pose in cmds.ls(type='dagPose'):\n    cmds.dagPose(pose, r=1)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Resave bind pose" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Resave bind pose" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "resetBP" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.resave_bind_pose()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Select hierarchy joints" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Select hierarchy joints" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Select_Hierarchy_Joints_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Select_Hierarchy_Joints_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "cmds.select(hi=1)\njnts = cmds.ls( sl=1, type='joint' )\ncmds.select(jnts)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Bind mesh(es) to joint(s)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Bind mesh(es) to joint(s)" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Bind_Mesh_to_Skel.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Bind_Mesh_to_Skel.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.bind_multi_meshes()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Copy Vertex Weights" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Copy Vertex Weights" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Copy_Vertex_Weights_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Copy_Vertex_Weights_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "artAttrSkinWeightCopy" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Paste Vertex Weights" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Paste Vertex Weights" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Paste_Vertex_Weights_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Paste_Vertex_Weights_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "artAttrSkinWeightPaste" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Weight hammer" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Weight hammer" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.0016129 0.0016129 0.0016129 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/face.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/face.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "weightHammerVerts" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Save Weights" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Save Weights" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/saveweights.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/saveweights.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "from scSaveWeights import scSaveWeightsUI\nscSaveWeightsUI.initUI()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "cometSkinWeight..." 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "cometSkinWeight..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Comet_Skin_Weight_Tool.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Comet_Skin_Weight_Tool.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"cometSkinWeight.mel\"; cometSkinWeight(); " 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "cometSaveWeights..." 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "cometSaveWeights..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Comet_Save_Weight_Tool.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Comet_Save_Weight_Tool.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source \"cometSaveWeights.mel\"; cometSaveWeights(); " 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "No Flip Pole Vector" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "No Flip Pole Vector" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/No Flip_Pole_Vector_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/No Flip_Pole_Vector_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import no_flip_pole_vector_tool as nfpv\nnfpv.No_Flip_Pole_Vector().show_ui()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "source cometMenu" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "source cometMenu" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/source_Comet_Menu_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/source_Comet_Menu_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "source cometMenu" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation " copyVertNorm" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label " copyVertNorm" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Copy and_Paste_Vert_Normals.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Copy and_Paste_Vert_Normals.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "def copyVertNorm(source = cmds.ls(os=1)[0], dest = cmds.ls(os=1)[1]):\n    source_norm = cmds.polyNormalPerVertex(source, q=1, xyz=1)\n    dest_norm = cmds.polyNormalPerVertex(dest, q=1, xyz=1)\n    cmds.polyNormalPerVertex(dest, xyz=source_norm[:3], e=1)\n    \ncopyVertNorm()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Set" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Set" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.2 
+        -image "/Users/hhsu/OneDrive/scripts/maya/icons/Create_Selection_Set_.png" 
+        -image1 "/Users/hhsu/OneDrive/scripts/maya/icons/Create_Selection_Set_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "CreateSet" 
+        -sourceType "mel" 
+        -doubleClickCommand "CreateSetOptions" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Local Rotation Axes" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Local Rotation Axes" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.3 
+        -image "C:/Users/howar/OneDrive/scripts/maya/icons/Show_LRA's_.png" 
+        -image1 "C:/Users/howar/OneDrive/scripts/maya/icons/Show_LRA's_.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "ToggleLocalRotationAxes" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "hide all LRAs from selected joints" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "for s in pm.selected():\n    if s.displayLocalAxis.get():\n       ..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "clrLRA" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "for s in pm.selected():\n    if s.displayLocalAxis.get():\n        s.displayLocalAxis.set(0)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "import pymel.core as pm\nimport maya.cmds as cmds\nimport rigging.utils as rutils\n\nselectedJoints = pm.ls(selection=True)\n\nfor selected in selectedJoints:\n    side = selected.side.get()\n    nameSplit = selected.split(\"_\")\n    if side == 1:\n        nameSplit[0] = (selected.namespace() + \"R\")\n    elif side == 2:\n        nameSplit[0] = (selected.namespace() + \"L\")\n    targetJoint = pm.PyNode(\"_\".join(nameSplit))\n\n    sourceMatrix = cmds.xform(selected.name(), matrix=True, query=True, worldSpace=True)\n    mirroredValues = [1.0, -1.0, -1.0, 1.0,\n                      1.0, -1.0, -1.0, 1.0,\n                        1.0, -1.0, -1.0, 1.0,\n                        -1.0, 1.0, 1.0, 1.0]\n\n    finalMatrix = list()\n    for count in range(16):\n        finalMatrix.append(sourceMatrix[count]*mirroredValues[count])\n\n\n    cmds.xform(targetJoint.name(), matrix=finalMatrix, worldSpace=True)\n    rutils.moveRotateToJointOrient(targetJoint.name())\n    rutils.moveRotateToJointOrient(selected.name())" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import pymel.core as pm\nimport maya.cmds as cmds\nimport rigging...." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/howar/OneDrive/scripts/maya/icons/Mirror_Selec_Joint.png" 
+        -image1 "C:/Users/howar/OneDrive/scripts/maya/icons/Mirror_Selec_Joint.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import pymel.core as pm\nimport maya.cmds as cmds\n\n\nselectedJoints = pm.ls(selection=True)\n\nfor selected in selectedJoints:\n    side = selected.side.get()\n    nameSplit = selected.split(\"_\")\n    if side == 1:\n        nameSplit[0] = (selected.namespace() + \"R\")\n    elif side == 2:\n        nameSplit[0] = (selected.namespace() + \"L\")\n    targetJoint = pm.PyNode(\"_\".join(nameSplit))\n\n    sourceMatrix = cmds.xform(selected.name(), matrix=True, query=True, worldSpace=True)\n    mirroredValues = [1.0, -1.0, -1.0, 1.0,\n                      1.0, -1.0, -1.0, 1.0,\n                      1.0, -1.0, -1.0, 1.0,\n                      -1.0, 1.0, 1.0, 1.0]\n\n    finalMatrix = list()\n    for count in range(16):\n        finalMatrix.append(sourceMatrix[count]*mirroredValues[count])\n\n\n    cmds.xform(targetJoint.name(), matrix=finalMatrix, worldSpace=True)\n    hhu.moveSelectedRotateToJointOrient(targetJoint.name())\n    hhu.moveSelectedRotateToJointOrient(selected.name())" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Normal constraint" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Normal" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "normalConstraint.png" 
+        -image1 "normalConstraint.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "normalConstraint -weight 1 -aimVector 1 0 0 -upVector 0 1 0 -worldUpType \"vector\" -worldUpVector 0 1 0" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "introt" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "introt" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "intRot" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "commandButton.png" 
+        -image1 "commandButton.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "sel = pm.selected() \n\nfor jnt in sel:\n\tjnt.rx.set( round( jnt.rx.get(), 2))\n\tjnt.ry.set( round( jnt.ry.get(), 2))\n\tjnt.rz.set( round( jnt.rz.get(), 2))\n\n\tjnt.tx.set( round( jnt.tx.get(), 2))\n\tjnt.ty.set( round( jnt.ty.get(), 2))\n\tjnt.tz.set( round( jnt.tz.get(), 2))" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "move rotation to jointOrient" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "ru.moveRotateToJointOrient( pm.ls(sl=1)[0].name() )" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "rot2jo" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import rigutils as ru; ru.moveRotateToJointOrient( pm.ls(sl=1)[0].name() )" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Move skin joints tool options" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "moveSkinJointsDialogItem" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "moveSkinnedJoint.png" 
+        -image1 "moveSkinnedJoint.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "MoveSkinJointsToolOptions" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "move first selected object to second" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "pm.ls(sl=1)[1].setTranslation( pm.ls(sl=1)[0].getTranslation( ws..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "TR>TR" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "pm.matchTransform(pm.ls(sl=1)[0], pm.ls(sl=1)[1], pos=1, rot=1)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "pm.ls(sl=1)[0].setTranslation( pm.ls(sl=1)[1].getTranslation(ws=True), ws=True )" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "pm.ls(sl=1)[0].setTranslation( pm.ls(sl=1)[1].getTranslation(ws=..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "T>T" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "pm.matchTransform(pm.ls(sl=1)[0], pm.ls(sl=1)[1], pos=1, rot=0)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "pm.ls(sl=1)[0].setRotation( pm.ls(sl=1)[1].getRotation( ws=True ), ws=True )" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "pm.ls(sl=1)[0].setRotation( pm.ls(sl=1)[1].getRotation( ws=True ..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "R>R" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "pm.matchTransform(pm.ls(sl=1)[0], pm.ls(sl=1)[1], rot=1, pos=0)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "pm.matchTransform(pm.ls(sl=1)[0], pm.ls(sl=1)[1], piv=1, pos=0, rot=0)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "pm.matchTransform(pm.ls(sl=1)[0], pm.ls(sl=1)[1], piv=1, pos=0, ..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "pv>pv" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "pm.matchTransform(pm.ls(sl=1)[0], pm.ls(sl=1)[1], piv=1, pos=0, rot=0)" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "move rotation on bone to joint orient" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "hhu.moveSelectedRotateToJointOrient()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "R2JO" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.moveSelectedRotateToJointOrient()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "move joint orients to rotation" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "hhu.moveSelectedJointOrientToRotate()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "JO2R" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.moveSelectedJointOrientToRotate()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "hhu.createLocatorAtComponentAABB()" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "hhu.createLocatorAtComponentAABB()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "clAABB" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.createLocatorAtComponentAABB()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "ccreate locator at component" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "hhu.createLocatorAtComponent()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "CLaC" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.createLocatorAtComponent()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "hhu.createLocatorAtObject()" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "hhu.createLocatorAtObject()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "CLaO" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.createLocatorAtObject()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "create joint at object" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "hhu.createJointAtObject()" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "CJaO" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "hhu.createJointAtObject()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Curve Manager Tool" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Curve Manager Tool" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/howar/OneDrive/scripts/maya/icons/Curve_Shape_Mgmt.png" 
+        -image1 "C:/Users/howar/OneDrive/scripts/maya/icons/Curve_Shape_Mgmt.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import hh_autorig.widgets.widgets_UI as wui\ntry:\n    widgetsUI.close()\n    widgetsUI.deleteLater()\nexcept:\n    pass\nwidgetsUI = wui.CurveWidgetsUI()\nwidgetsUI.show()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "CoplanarJointOrient Tool" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "CoplanarJointOrient Tool" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/howar/OneDrive/scripts/maya/icons/coplnr_joint_orient.png" 
+        -image1 "C:/Users/howar/OneDrive/scripts/maya/icons/coplnr_joint_orient.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import CoplanarJointOrient.CoplanarJointOrient\nCoplanarJointOrient.CoplanarJointOrient.main()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "check if three objects are coplanar" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "check if three objects are coplanar" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -imageOverlayLabel "coplanar?" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.api.OpenMaya as api\n\n# pm.select('shoulder_control_L', 'elbow_control_L', 'wrist_control_L')\n\ns = pm.selected()\n\nj1 = api.MVector(pm.xform(s[0], q=1, t=1, ws=1))#.normalize()\nj2 = api.MVector(pm.xform(s[1], q=1, t=1, ws=1))#.normalize()\nj3 = api.MVector(pm.xform(s[2], q=1, t=1, ws=1))#.normalize()\n\nv1 = (j2 - j1).normalize()\nv2 = (j3 - j2).normalize()\n# v3 = (j1 - j3).normalize()\nv3 = api.MVector(0,1,0)\n\n\nshould_elbow_cross_product = v1 ^ v2\nscalarTripleProd = should_elbow_cross_product * v3\n\nprint(scalarTripleProd)\n\n# j = ((j1 - j3) / 2) + j3\n# pm.xform( pm.selected()[0], t=j, ws=1)\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "import skinner.window\nskinner.window.App()\n" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "import skinner.window\nskinner.window.App()\n" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "C:/Users/howar/OneDrive/scripts/maya/icons/skinner.png" 
+        -image1 "C:/Users/howar/OneDrive/scripts/maya/icons/skinner.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import skinner.window\nskinner.window.App()\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 35
+        -height 34
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "if pm.ls('arm_L_Ctrl')[0].IKFK.get() == 0:\n    # switch to IK\n    hand_L_FK_Ctrl_pos = pm.ls('hand_L_FK_Ctrl')[0].getMatrix(worldSpace=True)\n    pv_pos = pm.ls('arm_L_PV_Loc')[0].getMatrix(worldSpace=True)\n\n    arm_L_IK_Ctrl = pm.ls('arm_L_IK_Ctrl')[0]\n    arm_L_poleVec_Ctrl = pm.ls('arm_L_poleVec_Ctrl')[0]\n\n    arm_L_IK_Ctrl.setMatrix(hand_L_FK_Ctrl_pos, worldSpace=True)\n    arm_L_poleVec_Ctrl.setMatrix(pv_pos, worldSpace=True)\n\n    pm.ls('shoulder_L_orientConstraint1')[0].w0.set(0)\n    pm.ls('elbow_L_orientConstraint1')[0].w0.set(0)\n    pm.ls('hand_L_orientConstraint1')[0].w0.set(0)\n    pm.ls('shoulder_L_pointConstraint1')[0].w0.set(0)\n    pm.ls('elbow_L_pointConstraint1')[0].w0.set(0)\n    pm.ls('hand_L_pointConstraint1')[0].w0.set(0)\n    pm.ls('arm_L_IKhandle')[0].ikb.set(1)\n    \n    pm.ls('arm_L_Ctrl')[0].IKFK.set(1)\nelif pm.ls('arm_L_Ctrl')[0].IKFK.get() == 1:\n    # switch to FK\n    shoulder_pos = pm.ls('shoulder_L')[0].getMatrix(worldSpace=True)\n    elbow_pos = pm.ls('elbow_L')[0].getMatrix(worldSpace=True)\n    hand_pos = pm.ls('hand_L')[0].getMatrix(worldSpace=True)\n\n    shoulder_L_FK_Ctrl = pm.ls('shoulder_L_FK_Ctrl')[0]\n    elbow_L_FK_Ctrl = pm.ls('elbow_L_FK_Ctrl')[0]\n    hand_L_FK_Ctrl = pm.ls('hand_L_FK_Ctrl')[0]\n\n    shoulder_L_FK_Ctrl.setMatrix(shoulder_pos, worldSpace=True)\n    elbow_L_FK_Ctrl.setMatrix(elbow_pos, worldSpace=True)\n    hand_L_FK_Ctrl.setMatrix(hand_pos, worldSpace=True)\n\n    pm.ls('shoulder_L_orientConstraint1')[0].w0.set(1)\n    pm.ls('elbow_L_orientConstraint1')[0].w0.set(1)\n    pm.ls('hand_L_orientConstraint1')[0].w0.set(1)\n    pm.ls('shoulder_L_pointConstraint1')[0].w0.set(1)\n    pm.ls('elbow_L_pointConstraint1')[0].w0.set(1)\n    pm.ls('hand_L_pointConstraint1')[0].w0.set(1)\n    pm.ls('arm_L_IKhandle')[0].ikb.set(0)\n    pm.ls('arm_L_Ctrl')[0].IKFK.set(0)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "if pm.ls('arm_L_Ctrl')[0].IKFK.get() == 0:\n    # switch to IK\n  ..." 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -font "plainLabelFont" 
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "pythonFamily.png" 
+        -image1 "pythonFamily.png" 
+        -style "iconOnly" 
+        -marginWidth 0
+        -marginHeight 1
+        -command "import maya.cmds as cmds\n\nlimbs = {'arm': ('upperArm', 'lowerArm', 'hand'), 'leg': ('thigh', 'calf', 'foot')}\n\n\ndef switcher(sel, limb_ctrl):\n    splitlength = len(limb_ctrl.split('_'))\n    prefix = '' if splitlength == 3 else f'{sel.split(\"_\")[0]}_'\n    limb = limb_ctrl.replace('_Ctrl', '')\n    limb_type = limb.split('_')[0]\n    side = limb.split('_')[1]\n    namespace = ''\n    if cmds.getAttr(f'{limb_ctrl}.IKFK_Mode') == 0:\n        # switch to IK\n        print(f'{prefix}')\n        endlimb_L_FK_Ctrl_pos = cmds.xform(f'{prefix}{limbs[limb_type][2]}_{side}_FK_Ctrl', q=True, m=True, ws=True)\n        pv_pos = cmds.xform(f'{limb}_PV_loc', q=True, m=True, ws=True)\n\n        limb_L_IK_Ctrl = cmds.ls(f'{limb}_IK_Ctrl')[0]\n        limb_L_poleVec_Ctrl = cmds.ls(f'{limb}_poleVec_Ctrl')[0]\n\n        cmds.xform(limb_L_IK_Ctrl, m=endlimb_L_FK_Ctrl_pos, ws=True)\n        cmds.xform(limb_L_poleVec_Ctrl, m=pv_pos, ws=True)\n\n        cmds.setAttr(f'{limb_ctrl}.IKFK_Mode', 1)\n\n        # cmds.select(limb_ctrl, r=1)\n    elif cmds.getAttr(f'{limb_ctrl}.IKFK_Mode') == 1:\n        # switch to FK\n        firstlimb_pos = cmds.xform(f'{prefix}{limbs[limb_type][0]}_{side}', q=True, m=True, ws=True)\n        midlimb_pos = cmds.xform(f'{prefix}{limbs[limb_type][1]}_{side}', q=True, m=True, ws=True)\n        endlimb_pos = cmds.xform(f'{prefix}{limbs[limb_type][2]}_{side}', q=True, m=True, ws=True)\n\n        firstlimb_L_FK_Ctrl = cmds.ls(f'{prefix}{limbs[limb_type][0]}_{side}_FK_Ctrl')[0]\n        midlimb_L_FK_Ctrl = cmds.ls(f'{prefix}{limbs[limb_type][1]}_{side}_FK_Ctrl')[0]\n        endlimb_L_FK_Ctrl = cmds.ls(f'{prefix}{limbs[limb_type][2]}_{side}_FK_Ctrl')[0]\n\n        cmds.xform(firstlimb_L_FK_Ctrl, m=firstlimb_pos, ws=True)\n        cmds.xform(midlimb_L_FK_Ctrl, m=midlimb_pos, ws=True)\n        cmds.xform(endlimb_L_FK_Ctrl, m=endlimb_pos, ws=True)\n\n        cmds.setAttr(f'{limb_ctrl}.IKFK_Mode', 0)\n\n        # cmds.select(limb_ctrl, r=1)\n\n\ndef main():\n    if cmds.ls(sl=1):\n        try:\n            # switcher(cmds.ls(sl=1)[0])\n            switched_limbs = []\n            limb_ctrl = None\n            for sel in cmds.ls(sl=1):\n                # make sure every selection is a valid controller\n                if cmds.attributeQuery('controller', n=sel, ex=True):\n                    limb_ctrl = cmds.getAttr(f'{sel}.controller')  # limb control selected\n                    if limb_ctrl not in switched_limbs:\n                        switcher(sel, limb_ctrl)\n                        switched_limbs.append(limb_ctrl)\n                else:\n                    print(f'Selection {sel} is not a switchable controller')\n            cmds.select(switched_limbs, r=1)\n        except:\n            print(f'Invalid IKFK switchable controller {cmds.ls(sl=1)[0]} selected!')\n\n\nif __name__ == \"__main__\":\n    main()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 

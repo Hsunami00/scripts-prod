@@ -1,0 +1,538 @@
+//Maya Preference 2024 (Release 1)
+//
+//
+
+//
+// The runtime commands referenced by the hotkeys
+//
+runTimeCommand
+	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("pm.selectType( c=0 ) if ( pm.selectType(q=1, c=0) ) else pm.selectType( c=1 )")
+	ToggleCurvesSelectMode;
+
+runTimeCommand
+	-label ""
+	-annotation "createJointAtObject"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("hhu.createJointAtObject()")
+	createJointAtObject;
+
+runTimeCommand
+	-label ""
+	-annotation "Open an Explorer folder in current scene directory"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import os; os.startfile( pm.sceneName().dirname().truepath() )")
+	openFolderHere;
+
+runTimeCommand
+	-label ""
+	-annotation "Toggle between select and pan modes"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import pymel.core as pm\ntrack_context = \"trackSuperContext\"\nselect_context = \"selectSuperContext\"\n\nif pm.context.currentCtx() == track_context:\n    pm.general.setToolTo(select_context)\nelse:\n    pm.general.setToolTo(track_context)")
+	TogglePanContext;
+
+runTimeCommand
+	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("pm.selectType( joint=0 ) if pm.selectType( q=1, joint=1 ) else pm.selectType( joint=1 )")
+	JointSelectionMode;
+
+runTimeCommand
+	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("if cmds.getPanel( to=cmds.getPanel(withFocus=1) ):\n    currentPanel = cmds.getPanel(withFocus=1)\n    \nif cmds.modelEditor(currentPanel, q=1, jx=1):\n    cmds.modelEditor(currentPanel, edit=1, jx=0)\n    cmds.modelEditor(currentPanel, edit=1, j=0)\nelse:\n    cmds.modelEditor(currentPanel, edit=1, jx=1)\n    cmds.modelEditor(currentPanel, edit=1, j=1)")
+	ToggleJointXRayViewVis;
+
+runTimeCommand
+	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("if cmds.getPanel( to=cmds.getPanel(withFocus=1) ):\n    currentPanel = cmds.getPanel(withFocus=1)\n    \nif cmds.modelEditor(currentPanel, q=1, jx=1):\n    cmds.modelEditor(currentPanel, edit=1, jx=0)\nelse:\n    cmds.modelEditor(currentPanel, edit=1, jx=1)")
+	ToggleJointXRayOnly;
+
+runTimeCommand
+	-label ""
+	-annotation "reset units"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("cmds.currentUnit(l='cm', time='ntsc')\ncmds.grid(s=100, sp=100)\ncmds.setAttr(\"perspShape.nearClipPlane\", 0.5)\ncmds.setAttr(\"perspShape.farClipPlane\", 150000)\ncmds.setAttr(\"perspShape.focalLength\", 100)\npm.playbackOptions( min=1, ast=1, max=60, aet=60 )")
+	resetUnits;
+
+runTimeCommand
+	-label ""
+	-annotation "create loc at selected components using AABB"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("hhu.createLocatorAtComponentAABB(pm.ls(sl=1)[0])")
+	createLocatorAtComponentAABB;
+
+runTimeCommand
+	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "mel"
+	-command ("dR_DoCmd(\"selectAll\")")
+	selectAll;
+
+runTimeCommand
+	-label ""
+	-annotation "openFileDialogInSceneDir"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("hhu.openFileDialogInSceneDir()")
+	openFileDialogInSceneDir;
+
+runTimeCommand
+	-label ""
+	-annotation "createLocatorAtComponent"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("hhu.createLocatorAtComponent()")
+	createLocatorAtComponent;
+
+runTimeCommand
+	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("pm.selectType( nurbsSurface=0, polymesh=0, subdiv=0, plane=0 ) if ( pm.selectType(q=1, nurbsSurface=1) and pm.selectType(q=1, polymesh=1) and pm.selectType(q=1, subdiv=1) and pm.selectType(q=1, plane=1) )     else pm.selectType( nurbsSurface=1, polymesh=1, subdiv=1, plane=1 )\n")
+	PolySelectionMode;
+
+runTimeCommand
+	-label ""
+	-annotation ""
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("pm.selectType( alo=0 ) if ( pm.selectType(q=1, alo=0) ) else pm.selectType( alo=1 )")
+	ToggleAllObjsSelectMode;
+
+runTimeCommand
+	-label ""
+	-annotation "saveFileAsDialogInSceneDir"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("hhu.saveAsDialogInSceneDir()")
+	saveFileAsDialogInSceneDir;
+
+//
+// The name commands referenced by the hotkeys
+//
+nameCommand
+	-annotation "JointSelectionModeNameCommand"
+	-sourceType "mel"
+	-command ("JointSelectionMode")
+	JointSelectionModeNameCommand;
+
+nameCommand
+	-annotation "PolySelectionModeNameCommand"
+	-sourceType "mel"
+	-command ("PolySelectionMode")
+	PolySelectionModeNameCommand;
+
+nameCommand
+	-annotation "ToggleJointXRayViewNameCommand"
+	-sourceType "mel"
+	-command ("ToggleJointXRayViewVis")
+	ToggleJointXRayViewNameCommand;
+
+nameCommand
+	-annotation "ToggleCurvesSelectModeNameCommand"
+	-sourceType "mel"
+	-command ("ToggleCurvesSelectMode")
+	ToggleCurvesSelectModeNameCommand;
+
+nameCommand
+	-annotation "ToggleAllObjsSelectModeNameCommand"
+	-sourceType "mel"
+	-command ("ToggleAllObjsSelectMode")
+	ToggleAllObjsSelectModeNameCommand;
+
+nameCommand
+	-annotation "createLocatorAtComponentNameCommand"
+	-sourceType "mel"
+	-command ("createLocatorAtComponent")
+	createLocatorAtComponentNameCommand;
+
+nameCommand
+	-annotation "openFolderHereNameCommand"
+	-sourceType "mel"
+	-command ("openFolderHere")
+	openFolderHereNameCommand;
+
+nameCommand
+	-annotation "openFileDialogInSceneDirNameCommand"
+	-sourceType "mel"
+	-command ("openFileDialogInSceneDir")
+	openFileDialogInSceneDirNameCommand;
+
+nameCommand
+	-annotation "saveFileAsDialogInSceneDirNameCommand"
+	-sourceType "mel"
+	-command ("saveFileAsDialogInSceneDir")
+	saveFileAsDialogInSceneDirNameCommand;
+
+nameCommand
+	-annotation "createJointAtObjectNameCommand"
+	-sourceType "mel"
+	-command ("createJointAtObject")
+	createJointAtObjectNameCommand;
+
+nameCommand
+	-annotation "createLocatorAtComponentAABBNameCommand"
+	-sourceType "mel"
+	-command ("createLocatorAtComponentAABB")
+	createLocatorAtComponentAABBNameCommand;
+
+nameCommand
+	-annotation "SelectHierarchyNameCommand"
+	-sourceType "mel"
+	-command ("SelectHierarchy")
+	SelectHierarchyNameCommand;
+
+nameCommand
+	-annotation "SelectToggleModeNameCommand"
+	-sourceType "mel"
+	-command ("SelectToggleMode")
+	SelectToggleModeNameCommand;
+
+nameCommand
+	-annotation "SelectEdgeMaskNameCommand"
+	-sourceType "mel"
+	-command ("SelectEdgeMask")
+	SelectEdgeMaskNameCommand;
+
+nameCommand
+	-annotation "ArtPaintSkinWeightsToolNameCommand"
+	-sourceType "mel"
+	-command ("ArtPaintSkinWeightsTool")
+	ArtPaintSkinWeightsToolNameCommand;
+
+nameCommand
+	-annotation "ToolSettingsWindowNameCommand"
+	-sourceType "mel"
+	-command ("ToolSettingsWindow")
+	ToolSettingsWindowNameCommand;
+
+nameCommand
+	-annotation "RotateToolNameCommand"
+	-sourceType "mel"
+	-command ("RotateTool")
+	RotateToolNameCommand;
+
+nameCommand
+	-annotation "SelectSimilarNameCommand"
+	-sourceType "mel"
+	-command ("SelectSimilar")
+	SelectSimilarNameCommand;
+
+nameCommand
+	-annotation "PlaybackToggleNameCommand"
+	-sourceType "mel"
+	-command ("PlaybackToggle")
+	PlaybackToggleNameCommand;
+
+nameCommand
+	-annotation "CopyVertexSkinWeightsNameCommand"
+	-sourceType "mel"
+	-command ("CopyVertexSkinWeights")
+	CopyVertexSkinWeightsNameCommand;
+
+nameCommand
+	-annotation "PasteVertexSkinWeightsNameCommand"
+	-sourceType "mel"
+	-command ("PasteVertexSkinWeights")
+	PasteVertexSkinWeightsNameCommand;
+
+nameCommand
+	-annotation "ImportNameCommand"
+	-sourceType "mel"
+	-command ("Import")
+	ImportNameCommand;
+
+nameCommand
+	-annotation "DeleteHistoryNameCommand"
+	-sourceType "mel"
+	-command ("DeleteHistory")
+	DeleteHistoryNameCommand;
+
+nameCommand
+	-annotation "FreezeTransformationsNameCommand"
+	-sourceType "mel"
+	-command ("FreezeTransformations")
+	FreezeTransformationsNameCommand;
+
+nameCommand
+	-annotation "FrameSelectedWithoutChildrenNameCommand"
+	-sourceType "mel"
+	-command ("FrameSelectedWithoutChildren")
+	FrameSelectedWithoutChildrenNameCommand;
+
+nameCommand
+	-annotation "ToggleIsolateSelectNameCommand"
+	-sourceType "mel"
+	-command ("ToggleIsolateSelect")
+	ToggleIsolateSelectNameCommand;
+
+nameCommand
+	-annotation "HypershadeWindowNameCommand"
+	-sourceType "mel"
+	-command ("HypershadeWindow")
+	HypershadeWindowNameCommand;
+
+nameCommand
+	-annotation "ComponentEditorNameCommand"
+	-sourceType "mel"
+	-command ("ComponentEditor")
+	ComponentEditorNameCommand;
+
+nameCommand
+	-annotation "NodeEditorWindowNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorWindow")
+	NodeEditorWindowNameCommand;
+
+nameCommand
+	-annotation "CenterPivotNameCommand"
+	-sourceType "mel"
+	-command ("CenterPivot")
+	CenterPivotNameCommand;
+
+nameCommand
+	-annotation "ReferenceEditorNameCommand"
+	-sourceType "mel"
+	-command ("ReferenceEditor")
+	ReferenceEditorNameCommand;
+
+nameCommand
+	-annotation "ToggleJointXRayOnlyNameCommand"
+	-sourceType "mel"
+	-command ("ToggleJointXRayOnly")
+	ToggleJointXRayOnlyNameCommand;
+
+nameCommand
+	-annotation "resetUnitsNameCommand"
+	-sourceType "mel"
+	-command ("resetUnits")
+	resetUnitsNameCommand;
+
+nameCommand
+	-annotation "selectAllNameCommand"
+	-sourceType "mel"
+	-command ("selectAll")
+	selectAllNameCommand;
+
+nameCommand
+	-annotation "TogglePanContextNameCommand"
+	-sourceType "mel"
+	-command ("TogglePanContext")
+	TogglePanContextNameCommand;
+
+//
+// The user hotkeys
+//
+//
+// The hotkey set
+//
+hotkeySet -source "Maya_Default" -current User;
+//
+// The hotkey contexts and hotkeys
+//
+hotkey -keyShortcut "f" -alt -name ("ToggleJointXRayViewNameCommand");
+hotkey -keyShortcut "F10" -name ("");
+hotkey -keyShortcut "x" -ctl -alt -name ("createLocatorAtComponentAABBNameCommand");
+hotkey -keyShortcut "i" -ctl -sht -name ("");
+hotkey -keyShortcut "F9" -name ("");
+hotkey -keyShortcut "s" -name ("ToggleToolMessageNameCommand");
+hotkey -keyShortcut "1" -alt -name ("ToggleAllObjsSelectModeNameCommand");
+hotkey -keyShortcut "n" -alt -sht -name ("NodeEditorWindowNameCommand");
+hotkey -keyShortcut "2" -ctl -alt -name ("");
+hotkey -keyShortcut "r" -alt -sht -name ("ReferenceEditorNameCommand");
+hotkey -keyShortcut "h" -alt -sht -name ("HypershadeWindowNameCommand");
+hotkey -keyShortcut "F7" -name ("");
+hotkey -keyShortcut "v" -ctl -alt -sht -name ("PasteSelectedNameCommand");
+hotkey -keyShortcut "r" -ctl -alt -name ("resetUnitsNameCommand");
+hotkey -keyShortcut "c" -ctl -alt -name ("CenterPivotNameCommand");
+hotkey -keyShortcut "q" -alt -sht -name ("TogglePanContextNameCommand");
+hotkey -keyShortcut "f" -ctl -alt -sht -name ("");
+hotkey -keyShortcut "4" -alt -name ("ToggleCurvesSelectModeNameCommand");
+hotkey -keyShortcut "s" -ctl -sht -name ("saveFileAsDialogInSceneDirNameCommand");
+hotkey -keyShortcut "a" -ctl -alt -name ("SelectHierarchyNameCommand");
+hotkey -keyShortcut "f" -name ("FrameSelectedWithoutChildrenNameCommand");
+hotkey -keyShortcut "a" -ctl -alt -releaseName ("");
+hotkey -keyShortcut "f" -alt -sht -name ("FreezeTransformationsNameCommand");
+hotkey -keyShortcut "v" -alt -name ("PlaybackToggleNameCommand");
+hotkey -keyShortcut "3" -alt -name ("PolySelectionModeNameCommand");
+hotkey -keyShortcut "t" -ctl -name ("");
+hotkey -keyShortcut "d" -alt -name ("ConvertSelectionToVerticesNameCommand");
+hotkey -keyShortcut "s" -alt -name ("SelectSimilarNameCommand");
+hotkey -keyShortcut "i" -ctl -name ("ImportNameCommand");
+hotkey -keyShortcut "2" -alt -name ("JointSelectionModeNameCommand");
+hotkey -keyShortcut "v" -ctl -sht -name ("PasteVertexSkinWeightsNameCommand");
+hotkey -keyShortcut "x" -alt -name ("createLocatorAtComponentNameCommand");
+hotkey -keyShortcut "i" -ctl -alt -name ("");
+hotkey -keyShortcut "o" -ctl -name ("openFileDialogInSceneDirNameCommand");
+hotkey -keyShortcut "i" -sht -name ("ToggleIsolateSelectNameCommand");
+hotkey -keyShortcut "l" -releaseName ("");
+hotkey -keyShortcut "x" -alt -sht -name ("createLocatorAtComponentAABBNameCommand");
+hotkey -keyShortcut "l" -name ("HypergraphDGWindowNameCommand");
+hotkey -keyShortcut "f" -ctl -alt -name ("ToggleJointXRayOnlyNameCommand");
+hotkey -keyShortcut "/" -alt -name ("PlaybackToggleNameCommand");
+hotkey -keyShortcut "q" -alt -releaseName ("");
+hotkey -keyShortcut "q" -alt -name ("SelectVertexMaskNameCommand");
+hotkey -keyShortcut "d" -alt -sht -name ("DeleteHistoryNameCommand");
+hotkey -keyShortcut "F10" -ctl -name ("");
+hotkey -keyShortcut "e" -alt -name ("SelectEdgeMaskNameCommand");
+hotkey -keyShortcut "c" -ctl -sht -name ("CopyVertexSkinWeightsNameCommand");
+hotkey -keyShortcut "a" -alt -name ("SelectToggleModeNameCommand");
+hotkey -keyShortcut "j" -alt -name ("createJointAtObjectNameCommand");
+hotkey -keyShortcut "a" -ctl -sht -name ("selectAllNameCommand");
+hotkey -keyShortcut "g" -alt -name ("");
+hotkey -keyShortcut "1" -ctl -name ("");
+hotkey -keyShortcut "F8" -name ("");
+hotkey -keyShortcut "t" -alt -name ("ToolSettingsWindowNameCommand");
+hotkey -keyShortcut "a" -ctl -alt -sht -name ("");
+hotkey -keyShortcut "w" -alt -name ("ArtPaintSkinWeightsToolNameCommand");
+hotkey -keyShortcut "i" -alt -name ("");
+hotkey -keyShortcut "v" -ctl -name ("");
+hotkey -keyShortcut "c" -alt -sht -name ("ComponentEditorNameCommand");
+hotkey -keyShortcut "e" -name ("RotateToolNameCommand");
+hotkey -keyShortcut "e" -releaseName ("");
+hotkey -keyShortcut "5" -alt -name ("");
+hotkey -keyShortcut "o" -alt -name ("openFolderHereNameCommand");
+hotkey -keyShortcut "v" -ctl -alt -name ("");
+hotkey -keyShortcut "3" -ctl -alt -name ("");
+hotkeyCtx -type "Editor" -addClient "graphEditor";
+hotkeyCtx -type "Editor" -addClient "shapePanel";
+hotkeyCtx -type "Editor" -addClient "timeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "posePanel";
+hotkeyCtx -type "Editor" -addClient "hyperGraphPanel";
+hotkey -keyShortcut "t" -alt -name ("") -ctxClient "hyperGraphPanel";
+hotkeyCtx -type "Editor" -addClient "nodeEditorPanel";
+hotkeyCtx -type "Editor" -addClient "outlinerPanel";
+hotkeyCtx -type "Editor" -addClient "polyTexturePlacementPanel";
+hotkeyCtx -type "Editor" -addClient "profilerPanel";
+hotkeyCtx -type "Editor" -addClient "hyperShadePanel";
+hotkeyCtx -type "Tool" -addClient "Unfold3DBrush";
+hotkeyCtx -type "Tool" -addClient "bpDraw";
+hotkeyCtx -type "Tool" -addClient "polyCutUV";
+hotkeyCtx -type "Tool" -addClient "sculptMeshCache";
+hotkeyCtx -type "Tool" -addClient "texCutContext";
+hotkeyCtx -type "Tool" -addClient "xgmIGBrush";
+hotkeyCtx -type "Tool" -addClient "SymmetrizeUVBrush";
+hotkeyCtx -type "Tool" -addClient "texSculptCacheContext";

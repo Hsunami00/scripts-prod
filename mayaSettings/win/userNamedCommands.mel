@@ -1,0 +1,196 @@
+//Maya Preference 2017 (Release 1)
+//
+//
+
+nameCommand
+	-annotation "JointSelectionModeNameCommand"
+	-sourceType "mel"
+	-command ("JointSelectionMode")
+	JointSelectionModeNameCommand;
+
+nameCommand
+	-annotation "PolySelectionModeNameCommand"
+	-sourceType "mel"
+	-command ("PolySelectionMode")
+	PolySelectionModeNameCommand;
+
+nameCommand
+	-annotation "ToggleJointXRayViewNameCommand"
+	-sourceType "mel"
+	-command ("ToggleJointXRayView")
+	ToggleJointXRayViewNameCommand;
+
+nameCommand
+	-annotation "ToggleCurvesSelectModeNameCommand"
+	-sourceType "mel"
+	-command ("ToggleCurvesSelectMode")
+	ToggleCurvesSelectModeNameCommand;
+
+nameCommand
+	-annotation "ToggleAllObjsSelectModeNameCommand"
+	-sourceType "mel"
+	-command ("ToggleAllObjsSelectMode")
+	ToggleAllObjsSelectModeNameCommand;
+
+nameCommand
+	-annotation "createLocatorAtComponentNameCommand"
+	-sourceType "mel"
+	-command ("createLocatorAtComponent")
+	createLocatorAtComponentNameCommand;
+
+nameCommand
+	-annotation "openFolderHereNameCommand"
+	-sourceType "mel"
+	-command ("openFolderHere")
+	openFolderHereNameCommand;
+
+nameCommand
+	-annotation "openFileDialogInSceneDirNameCommand"
+	-sourceType "mel"
+	-command ("openFileDialogInSceneDir")
+	openFileDialogInSceneDirNameCommand;
+
+nameCommand
+	-annotation "saveFileAsDialogInSceneDirNameCommand"
+	-sourceType "mel"
+	-command ("saveFileAsDialogInSceneDir")
+	saveFileAsDialogInSceneDirNameCommand;
+
+nameCommand
+	-annotation "createJointAtObjectNameCommand"
+	-sourceType "mel"
+	-command ("createJointAtObject")
+	createJointAtObjectNameCommand;
+
+nameCommand
+	-annotation "createLocatorAtComponentAABBNameCommand"
+	-sourceType "mel"
+	-command ("createLocatorAtComponentAABB")
+	createLocatorAtComponentAABBNameCommand;
+
+nameCommand
+	-annotation "SelectHierarchyNameCommand"
+	-sourceType "mel"
+	-command ("SelectHierarchy")
+	SelectHierarchyNameCommand;
+
+nameCommand
+	-annotation "SelectToggleModeNameCommand"
+	-sourceType "mel"
+	-command ("SelectToggleMode")
+	SelectToggleModeNameCommand;
+
+nameCommand
+	-annotation "SelectEdgeMaskNameCommand"
+	-sourceType "mel"
+	-command ("SelectEdgeMask")
+	SelectEdgeMaskNameCommand;
+
+nameCommand
+	-annotation "ArtPaintSkinWeightsToolNameCommand"
+	-sourceType "mel"
+	-command ("ArtPaintSkinWeightsTool")
+	ArtPaintSkinWeightsToolNameCommand;
+
+nameCommand
+	-annotation "ToolSettingsWindowNameCommand"
+	-sourceType "mel"
+	-command ("ToolSettingsWindow")
+	ToolSettingsWindowNameCommand;
+
+nameCommand
+	-annotation "RotateToolNameCommand"
+	-sourceType "mel"
+	-command ("RotateTool")
+	RotateToolNameCommand;
+
+nameCommand
+	-annotation "SelectSimilarNameCommand"
+	-sourceType "mel"
+	-command ("SelectSimilar")
+	SelectSimilarNameCommand;
+
+nameCommand
+	-annotation "PlaybackToggleNameCommand"
+	-sourceType "mel"
+	-command ("PlaybackToggle")
+	PlaybackToggleNameCommand;
+
+nameCommand
+	-annotation "CopyVertexSkinWeightsNameCommand"
+	-sourceType "mel"
+	-command ("CopyVertexSkinWeights")
+	CopyVertexSkinWeightsNameCommand;
+
+nameCommand
+	-annotation "PasteVertexSkinWeightsNameCommand"
+	-sourceType "mel"
+	-command ("PasteVertexSkinWeights")
+	PasteVertexSkinWeightsNameCommand;
+
+nameCommand
+	-annotation "ImportNameCommand"
+	-sourceType "mel"
+	-command ("Import")
+	ImportNameCommand;
+
+nameCommand
+	-annotation "DeleteHistoryNameCommand"
+	-sourceType "mel"
+	-command ("DeleteHistory")
+	DeleteHistoryNameCommand;
+
+nameCommand
+	-annotation "FreezeTransformationsNameCommand"
+	-sourceType "mel"
+	-command ("FreezeTransformations")
+	FreezeTransformationsNameCommand;
+
+nameCommand
+	-annotation "FrameSelectedWithoutChildrenNameCommand"
+	-sourceType "mel"
+	-command ("FrameSelectedWithoutChildren")
+	FrameSelectedWithoutChildrenNameCommand;
+
+nameCommand
+	-annotation "ToggleIsolateSelectNameCommand"
+	-sourceType "mel"
+	-command ("ToggleIsolateSelect")
+	ToggleIsolateSelectNameCommand;
+
+nameCommand
+	-annotation "HypershadeWindowNameCommand"
+	-sourceType "mel"
+	-command ("HypershadeWindow")
+	HypershadeWindowNameCommand;
+
+nameCommand
+	-annotation "ComponentEditorNameCommand"
+	-sourceType "mel"
+	-command ("ComponentEditor")
+	ComponentEditorNameCommand;
+
+nameCommand
+	-annotation "NodeEditorWindowNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorWindow")
+	NodeEditorWindowNameCommand;
+
+nameCommand
+	-annotation "CenterPivotNameCommand"
+	-sourceType "mel"
+	-command ("CenterPivot")
+	CenterPivotNameCommand;
+
+nameCommand
+	-annotation "ReferenceEditorNameCommand"
+	-sourceType "mel"
+	-command ("ReferenceEditor")
+	ReferenceEditorNameCommand;
+
+nameCommand
+	-annotation "SetKeyNameCommand"
+	-sourceType "mel"
+	-command ("SetKey")
+	SetKeyNameCommand;
+

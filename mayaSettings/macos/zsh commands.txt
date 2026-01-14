@@ -1,0 +1,6 @@
+alias maya2024 = '/Applications/Autodesk/maya2024/Maya.app/Contents/bin/Maya'
+
+/Applications/Autodesk/maya2024/Maya.app/Contents/bin/mayapy -m ensurepip
+/Applications/Autodesk/maya2024/Maya.app/Contents/bin/mayapy -m pip install --upgrade pip
+/Applications/Autodesk/maya2024/Maya.app/Contents/bin/mayapy -m pip install pymel
+/Applications/Autodesk/maya2024/Maya.app/Contents/bin/mayapy -m pip install pyfbx

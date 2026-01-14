@@ -1,0 +1,108 @@
+//Maya Preference 2017 (Release 1)
+//
+//
+
+runTimeCommand
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("pm.selectType( joint=0 ) if pm.selectType( q=1, joint=1 ) else pm.selectType( joint=1 )")
+	JointSelectionMode;
+
+runTimeCommand
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("pm.selectType( nurbsSurface=0, polymesh=0, subdiv=0, plane=0 ) if ( pm.selectType(q=1, nurbsSurface=1) and pm.selectType(q=1, polymesh=1) and pm.selectType(q=1, subdiv=1) and pm.selectType(q=1, plane=1) )     else pm.selectType( nurbsSurface=1, polymesh=1, subdiv=1, plane=1 )\n")
+	PolySelectionMode;
+
+runTimeCommand
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("if pm.getPanel( to=pm.getPanel(withFocus=1) ):\n    currentPanel = pm.getPanel(withFocus=1)\n    \nif pm.modelEditor(currentPanel, q=1, jx=1):\n    pm.modelEditor(currentPanel, edit=1, jx=0)\n    pm.modelEditor(currentPanel, edit=1, j=0)\nelse:\n    pm.modelEditor(currentPanel, edit=1, jx=1)\n    pm.modelEditor(currentPanel, edit=1, j=1)")
+	ToggleJointXRayView;
+
+runTimeCommand
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("pm.selectType( alo=0 ) if ( pm.selectType(q=1, alo=0) ) else pm.selectType( alo=1 )")
+	ToggleAllObjsSelectMode;
+
+runTimeCommand
+	-annotation ""
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("pm.selectType( c=0 ) if ( pm.selectType(q=1, c=0) ) else pm.selectType( c=1 )")
+	ToggleCurvesSelectMode;
+
+runTimeCommand
+	-annotation "Adds noise/jitter to your animation curves."
+	-category "IW Animation"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import animnoise; reload(animnoise); animnoise.anim_noise_tool()")
+	IwAnimNoiseTool;
+
+runTimeCommand
+	-annotation "createLocatorAtComponent"
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("hhu.createLocatorAtComponent()")
+	createLocatorAtComponent;
+
+runTimeCommand
+	-annotation "Open an Explorer folder in current scene directory"
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("import os; os.startfile( pm.sceneName().dirname().truepath() )")
+	openFolderHere;
+
+runTimeCommand
+	-annotation "openFileDialogInSceneDir"
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("hhu.openFileDialogInSceneDir()")
+	openFileDialogInSceneDir;
+
+runTimeCommand
+	-annotation "saveFileAsDialogInSceneDir"
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("hhu.saveAsDialogInSceneDir()")
+	saveFileAsDialogInSceneDir;
+
+runTimeCommand
+	-annotation "createJointAtObject"
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("hhu.createJointAtObject()")
+	createJointAtObject;
+
+runTimeCommand
+	-annotation "create loc at selected components using AABB"
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("hhu.createLocatorAtComponentAABB(pm.ls(sl=1)[0])")
+	createLocatorAtComponentAABB;
+
+runTimeCommand
+	-annotation "reset units"
+	-category "Custom Scripts"
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("cmds.currentUnit(l='cm', time='ntsc')\ncmds.grid(s=100, sp=100)\ncmds.setAttr(\"perspShape.nearClipPlane\", 0.5)\ncmds.setAttr(\"perspShape.farClipPlane\", 150000)\ncmds.setAttr(\"perspShape.focalLength\", 100)\npm.playbackOptions( min=1, ast=1, max=60, aet=60 )")
+	resetUnits;
+

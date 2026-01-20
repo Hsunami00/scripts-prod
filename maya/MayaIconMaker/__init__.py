@@ -1,0 +1,1 @@
+from MayaIconMaker import MayaIconMakerUI, IconGenerator

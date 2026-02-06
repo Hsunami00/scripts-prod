@@ -1,0 +1,312 @@
+# # AUTORIG 2.0 By Hsunami
+
+# # method to export/bake out bones/animation as FK skeleton
+# # make Hierarchy type dropdown menu for broken or continuous hierarchy (?)
+# # adjust values for current unit (working in m for LL)
+# # add hind leg rig placer/build method
+# # variable FK tail using phalange placer with new build method
+# # Then add FK spine and IK-only leg.
+# # make flexiplane spine
+# # rewrite mirroring method to mirror behavior
+
+import maya.cmds as cmds
+import maya.mel as mel
+import pymel.core as pm
+import maya.OpenMaya as om
+import maya.OpenMayaAnim as oma
+import maya.OpenMayaUI as omu
+import maya.api.OpenMaya as api
+
+import math
+import sys
+
+import hh_autorig.hh_utils as hhutils
+import hh_autorig.widgets as w
+widgets = w.Widgets()
+
+RAD2DEG = (180/math.pi)
+DEG2RAD = (math.pi/180)
+
+UP_AXIS = api.MVector(0,0,1)
+FORWARD_AXIS = api.MVector(0,-1,0)
+
+
+class Autorig():
+    def __init__(self, name="hhutils_Autorig"):
+        # check units with pm.currentUnit(q=1)
+        # check zup and set
+        #
+        if not pm.ls('hhutilsAutoRigNode'):
+            self.autorignode = pm.createNode('network', n='hhutilsAutoRigNode')
+
+        self.rig_bones = list()
+        # check for placers, store in dict
+        self.placers = dict()
+        self.refresh_active_placers()
+
+        # get number of placers by type (arm, leg)
+        self.arm_placers = 0
+        for placer in self.placers:
+            if self.placers[placer] == "arm":
+                self.arm_placers += 1
+
+        # self.leg_placers = 0
+        # for placer in self.placers:
+        #     if self.placers[placer] == "leg":
+        #         self.leg_placers += 1
+        #
+        # # rebuild spine_placer object if already built
+        # if pm.ls("%s_SPINE_RIG_PLACER*" % self.rig_name):
+        #     self.spine_placer = []
+        #
+        #     _tmp_ary = []
+        #     for i in range(0, pm.getAttr("%s_SPINE_RIG_PLACER.placers" % self.rig_name, size=True)):
+        #         _tmp_ary.append( pm.ls(pm.getAttr("%s_SPINE_RIG_PLACER.placers[%s]" % (self.rig_name, i)))[0] )
+        #     self.spine_placer.append(_tmp_ary)
+        #
+        #     _tmp_ary = []
+        #     for i in range(0, pm.getAttr("%s_SPINE_RIG_PLACER.controlPieces" % self.rig_name, size=True)):
+        #         _tmp_ary.append( pm.ls(pm.getAttr("%s_SPINE_RIG_PLACER.controlPieces[%s]" % (self.rig_name, i)))[0] )
+        #     self.spine_placer.append(_tmp_ary)
+        #
+        #     self.spine_placer.append(pm.getAttr("%s_SPINE_RIG_PLACER.controls" % self.rig_name))
+        #     self.spine_placer.append(pm.getAttr("%s_SPINE_RIG_PLACER.curve" % self.rig_name))
+
+
+    # # Utility methods
+    def refresh_active_placers(self):
+        self.placers = {}
+        self.arm_placers = 0
+        self.leg_placers = 0
+
+        for node in pm.ls(exactType="transform"):
+            if pm.objExists("%s.placertype" % node):
+                self.placers[node] = pm.getAttr("%s.placertype" % node)
+                if self.placers[node] == 'arm':
+                    self.arm_placers += 1
+                if self.placers[node] == 'leg':
+                    self.leg_placers += 1
+
+
+    # Placer creation methods
+
+    def build_arm_placer(self, side, stretchy, num=1):
+        _arm_pieces = []
+        arm_placer_group = pm.group(name="ARM_%s" % side, empty=True)
+
+        # create clavicle, shoulder, elbow, wrist, bones
+        clavicle_bone_placer = pm.createNode('joint', n="clavicle_%s" % side)
+        clavicle_bone_placer.displayLocalAxis.set(1)
+        pm.xform(clavicle_bone_placer, r=False, ws=True, t=(20, 0, 100 ))
+        pm.xform(arm_placer_group, ws=1, t=( pm.xform(clavicle_bone_placer, ws=1, q=1, t=1) ))
+        _arm_pieces.append(clavicle_bone_placer)
+
+        shoulder_bone_placer = pm.createNode('joint', n="shoulder_%s" % side)
+        shoulder_bone_placer.displayLocalAxis.set(1)
+        pm.xform(shoulder_bone_placer, r=False, ws=True, t=(30, 0, 100))
+        _arm_pieces.append(shoulder_bone_placer)
+
+        elbow_bone_placer = pm.createNode('joint', n="elbow_%s" % side)
+        elbow_bone_placer.displayLocalAxis.set(1)
+        pm.xform(elbow_bone_placer, r=False, ws=True, t=(50, 5, 100))
+        _arm_pieces.append(elbow_bone_placer)
+
+        wrist_bone_placer = pm.createNode('joint', n="wrist_%s" % side)
+        wrist_bone_placer.displayLocalAxis.set(1)
+        pm.xform(wrist_bone_placer, r=False, ws=True, t=(70, 0, 100))
+        _arm_pieces.append(wrist_bone_placer)
+
+        pm.parent(shoulder_bone_placer, clavicle_bone_placer)
+        pm.parent(elbow_bone_placer, shoulder_bone_placer)
+        pm.parent(wrist_bone_placer, elbow_bone_placer)
+        # TODO: orient joints using a class method
+        hhutils.orient_chain('arm', clavicle_bone_placer)
+
+        # create cube control at clav, shoulder, elbow, wrist
+        clavicle_control_placer = widgets.create_circle_control("clavicle_control_%s" % side, scale=[6,6,6])
+        clavicle_control_grp = pm.createNode('transform', n='clavicle_control_grp')
+        pm.matchTransform(clavicle_control_grp, clavicle_control_placer, pos=1, rot=0)
+        pm.makeIdentity(clavicle_control_grp, a=1,  t=1, r=1, s=1)
+        pm.parent(clavicle_control_placer, clavicle_control_grp)
+
+        shoulder_control_placer = widgets.create_circle_control("shoulder_control_%s" % side, scale=[10,10,10])
+        shoulder_control_grp = pm.createNode('transform', n='shoulder_control_grp')
+        pm.matchTransform(shoulder_control_grp, shoulder_control_placer, pos=1, rot=0)
+        pm.makeIdentity(shoulder_control_grp, a=1, t=1, r=1, s=1)
+        pm.parent(shoulder_control_placer, shoulder_control_grp)
+
+        elbow_control_placer = widgets.create_circle_control("elbow_control_%s" % side, scale=[8,8,8])
+        elbow_control_grp = pm.createNode('transform', n='elbow_control_grp')
+        pm.matchTransform(elbow_control_grp, elbow_control_placer, pos=1, rot=0)
+        pm.makeIdentity(elbow_control_grp, a=1, t=1, r=1, s=1)
+        pm.parent(elbow_control_placer, elbow_control_grp)
+
+        wrist_control_placer = widgets.create_circle_control("wrist_control_%s" % side, scale=[6,6,6])
+        wrist_control_grp = pm.createNode('transform', n='wrist_control_grp')
+        pm.matchTransform(wrist_control_grp, wrist_control_placer, pos=1, rot=0)
+        pm.makeIdentity(wrist_control_grp, a=1, t=1, r=1, s=1)
+        pm.parent(wrist_control_placer, wrist_control_grp)
+
+        # create cube control for hand IK, cone control for pole vector  IK_hand_control_placer
+        IK_hand_control_placer = widgets.create_cube_control(("%s_arm_IKcontrol_placer" % side), [1, 3, 3])
+        IK_hand_control_grp = pm.createNode('transform', n='IK_hand_control_grp')
+        pm.matchTransform(IK_hand_control_grp, IK_hand_control_placer, pos=1, rot=0)
+        pm.makeIdentity(IK_hand_control_grp, a=1, t=1, r=1, s=1)
+        pm.parent(IK_hand_control_placer, IK_hand_control_grp)
+        pm.matchTransform(IK_hand_control_placer, wrist_bone_placer, pos=1, rot=0)
+        pm.makeIdentity(IK_hand_control_placer, a=1, t=1, r=1, s=1)
+        pm.parentConstraint(wrist_bone_placer, IK_hand_control_placer)
+
+        arm_pole_vector_placer = widgets.create_cube_control("%s_arm_poleVector_placer" % side, scale=[.75,.75,.75])
+        arm_pole_vector_grp = pm.createNode('transform', n='arm_pole_vector_grp')
+        pm.matchTransform(arm_pole_vector_grp, arm_pole_vector_placer, pos=1, rot=0)
+        pm.makeIdentity(arm_pole_vector_grp, a=1, t=1, r=1, s=1)
+        pm.parent(arm_pole_vector_placer, arm_pole_vector_grp)
+        pm.matchTransform(arm_pole_vector_placer, elbow_bone_placer, pos=1, rot=0)
+        arm_pole_vector_placer.setTranslation(arm_pole_vector_placer.getTranslation(ws=1) + (0, 20, 0), ws=0)
+        pm.makeIdentity(arm_pole_vector_placer, a=1, t=1, r=1, s=1)
+        pm.pointConstraint(elbow_bone_placer, arm_pole_vector_grp, mo=1, sk="y")
+
+        pm.parentConstraint(clavicle_bone_placer, clavicle_control_grp)
+        pm.parentConstraint(shoulder_bone_placer, shoulder_control_grp)
+        pm.parentConstraint(elbow_bone_placer, elbow_control_grp)
+        pm.parentConstraint(wrist_bone_placer, wrist_control_grp)
+
+        pm.parent(clavicle_control_grp, shoulder_control_grp, elbow_control_grp, clavicle_bone_placer,
+                  wrist_control_grp,  IK_hand_control_grp, arm_pole_vector_grp, arm_placer_group)
+        pm.select(d=True)
+        _arm_pieces.insert(0, arm_placer_group)
+
+        # store placer metadata in placer root node
+        pm.addAttr(arm_placer_group, ln="placers", dt="string", m=True)
+        i=0
+        for _piece in _arm_pieces:
+            pm.setAttr("%s.placers[%s]" % (arm_placer_group, i), _piece, type="string")
+            i += 1
+
+        pm.addAttr(arm_placer_group, ln="placertype", dt="string")        # type of placer (arm, leg, etc.)
+        pm.setAttr("%s.placertype" % arm_placer_group, "arm", type="string")
+
+        pm.addAttr(arm_placer_group, ln="connector", dt="string")        # where placer connects (spine, etc.)
+        pm.setAttr("%s.connector" % arm_placer_group, "spine3", type="string")
+        # pm.setAttr("%s.connector" % arm_placer_group, "%s_spine3" % self.rig_name, type="string")
+
+        pm.addAttr(arm_placer_group, ln="stretchy", at="bool")        # stretchiness flag
+        pm.setAttr("%s.stretchy" % arm_placer_group, stretchy)
+
+        self.placers[arm_placer_group] = pm.getAttr("%s.placertype" % arm_placer_group)    # add placer to dict
+        pm.select(d=1)
+
+        return _arm_pieces
+
+
+    def make_control(self, bone):
+        # parent and scale constraint controller nurb to bone
+        # have 3 pre-transform nodes parenting each controller, and parent accordingly
+        pass
+
+    def build_fk_chain_OPM(self, joint):
+        # connect control to bone using offset parent matrix
+        clav_ctrl = pm.ls(sl=1)[0]
+        clav_bone = pm.ls(sl=1)[1]
+
+        clav_ctrl.offsetParentMatrix.set(clav_ctrl.matrix.get())
+        clav_ctrl.setTranslation(0)
+        clav_ctrl.setRotation([0, 0, 0])
+
+        clav_bone.setTranslation(0)
+        clav_bone.setRotation([0, 0, 0])
+
+
+    def build_fk_chain(self, side, bonechain):
+        # connect control to bone using constraints
+        for bone in bonechain:
+            # parent and scale constraint control to bone
+            # parent controllers accordingly
+            pass
+
+
+    def build_ik_fk_limb(self, side, limb, origin_bone):
+        if not origin_bone:
+            origin_bone = pm.ls(sl=True)[0]
+        center_bone = pm.listRelatives(origin_bone, children=True)[0]
+        end_bone = pm.listRelatives(center_bone, children=True)[0]
+
+        limb_IK_control = pm.ls("%s_%s_IKcontrol" % (side, limb))[0]
+        limb_pole_control = pm.ls("%s_%s_poleVector" % (side, limb))[0]
+
+        if pm.ls("%s_%s_foot_control" % (side, limb)):
+            foot_control = pm.ls("%s_%s_foot_control" % (side, limb))[0]
+
+        # Create the IK handle.
+        limb_IK = pm.ikHandle(sol="ikRPsolver", sj=origin_bone, ee=end_bone, name=("%s_%s_%s_IKhandle" % (self.rig_name, side, limb)))
+
+        pm.setAttr("%s.visibility" % limb_IK[0], 0)
+
+        # Set the limbIk control in world space (default values won't be 0, but we don't care).
+        pm.move(0,0,0, limb_IK_control, rpr=True)
+        pm.makeIdentity(limb_IK_control, a=1, r=1, t=1, s=1)
+        end_bone_pos = pm.xform(end_bone, q=True, a=True, ws=True, rp=True)
+        pm.move(end_bone_pos[0], end_bone_pos[1], end_bone_pos[2], limb_IK_control, ws=True, a=True)
+        pm.makeIdentity(limb_IK_control, a=1, r=1, t=1, s=1)
+        pm.pointConstraint(limb_IK_control, limb_IK[0], w=1, mo=False)
+
+        # Create the default position locator for the limb pole vector
+        # (we'll use it to position the pole-vector when switching from FK to IK).
+        limb_pole_default_LOC = pm.spaceLocator(name="%s_%s_%s_pole_default_LOC" % (self.rig_name, side, limb))[0]
+        center_bone_pos = pm.xform(center_bone, q=True, a=True, ws=True, rp=True)
+        pm.xform(limb_pole_default_LOC, ws=True, t=center_bone_pos)
+        # pm.move(center_bone_pos[0], center_bone_pos[1], center_bone_pos[2], limb_pole_default_LOC, a=True)
+
+        # Parent the locator to the origin_bone joint and put the locator behind the center_bone.
+        pm.parent(limb_pole_default_LOC, origin_bone)
+
+        if center_bone_pos[2] < end_bone_pos[2]:
+            _pole_offset = -50
+        elif center_bone_pos[2] > end_bone_pos[2]:
+            _pole_offset = 50
+
+        pm.move(0, 0, _pole_offset, limb_pole_default_LOC, r=True, ws=True, wd=True)
+        pm.setAttr("%s.visibility" % limb_pole_default_LOC, 0)
+
+        # Match the position between the pole vector and the locator.
+        pm.pointConstraint(limb_pole_default_LOC, limb_pole_control, w=1, o=(0,0,0),name="_tmp_cnst")
+        pm.delete("_tmp_cnst")
+        pm.makeIdentity(limb_pole_control, apply=True, t=1, r=1, s=1, n=0)
+
+        # Pole-constraint the IK handle to the pole-vector control.
+        pm.poleVectorConstraint(limb_pole_control, limb_IK[0], w=1)
+
+        # Connect the IK handle visibility to the end_bone IK enable attribute.
+        pm.addAttr(limb_IK_control, ln="enableIk", at="bool", k=1, dv=0, h=1)
+        pm.connectAttr("%s.enableIk" % limb_IK_control, "%s.ikBlend" % limb_IK[0], f=1)
+        pm.connectAttr("%s.enableIk" % limb_IK_control, "%s.visibility" % limb_IK_control, f=1)
+        pm.connectAttr("%s.enableIk" % limb_IK_control, "%s.visibility" % limb_pole_control, f=1)
+
+        # Put the limb in IK by default.
+        pm.setAttr("%s.enableIk" % limb_IK_control, 0)
+
+        self.lock_attrs(limb_IK_control, ['sx', 'sy', 'sz'])
+        pm.setAttr("%s.v" % limb_IK_control, keyable=0, channelBox=0)
+
+        self.lock_attrs(limb_pole_control, ['sx', 'sy', 'sz', 'rx', 'ry', 'rz'])
+        pm.setAttr("%s.v" % limb_pole_control, keyable=0, channelBox=0)
+
+        if pm.ls("%s_offset" % (end_bone)):
+            pm.orientConstraint(limb_IK_control, "%s_offset" % (end_bone), mo=True)
+
+        return_controls = [ limb_IK, limb_IK_control, limb_pole_control ]
+        if pm.ls("%s_%s_%s_foot_control" % (self.rig_name, side, limb)):
+            pm.xform('%s.scalePivot' % foot_control, ws=True, t=(pm.xform(end_bone, q=True, t=True, ws=True)))
+            pm.xform('%s.rotatePivot' % foot_control, ws=True, t=(pm.xform(end_bone, q=True, t=True, ws=True)))
+            pm.makeIdentity(foot_control, apply=True, t=1, r=1, s=1, n=0)
+            return_controls.append(foot_control)
+
+        return return_controls
+
+
+
+
+
+a = Autorig()
+a.build_arm_placer(side="L", stretchy=0, num=1)

@@ -1,0 +1,12 @@
+       
+if ( `getPanel -to (eval("getPanel -withFocus"))` )
+    { $currentPanel = `getPanel -withFocus`;
+        if (`modelEditor -q   $currentPanel` == 'whatevs')
+            {
+            /* TOGGLE COMMAND OFF; */
+            } 
+        else
+            {
+            /* TOGGLE COMMAND ON; */
+            }
+    };

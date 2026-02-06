@@ -1,0 +1,56 @@
+UTIL
+openFileDialogInSceneDir
+saveAsDialogInSceneDir
+fileinfo_to_clipboard
+    scene
+    drive
+    dir
+    file
+toggle_cm_m
+unlockAndDeleteSelected
+close_all_windows
+delete_all_layers
+rename_file_nodes
+remove_references
+delete_all_namespaces
+round_off_xforms
+
+ANIMATION
+set_frame_range
+shift_keyframes
+break_out_anims
+
+RIGGING
+lock_all_skin_weights
+unlock_all_skin_weights
+bind_multi_meshes
+label_joint
+createLocatorAtComponent
+createLocatorAtComponentAABB
+createLocatorAtObject
+moveJointOrientToRotate
+moveRotateToJointOrient
+createJointAtObject
+createJointAtComponent
+createCurveAtObject
+getSkinningInfo
+resave_bind_pose
+vectors_are_coplanar
+create_offset_parent
+select_controllers_from_bones
+select_bones_from_controllers
+toggle_sel_bone_controller
+mirror_curve
+mirror_selected_curve
+mirror_selected_curves
+mirror_joint
+
+MODELING
+copy_paste_vert_norms
+
+??
+SCENE CLEANUP
+cleanup_skeleton_hierarchy
+
+NEW ONES TO MAKE:
+list all env vars os.environ.items()

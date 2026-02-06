@@ -1,0 +1,58 @@
+Head
+    - ribbon mouth/lips
+    - ribbon brows?
+    - IK and FK eye controls
+    - 8 eyelid bones
+    - space switching: world, neck,
+Torso
+    - IK/FK ribbon spine
+    - squash
+    - stretch
+
+Arms
+    - IK/FK switching
+    - bendy bones
+    - elbow slide
+Hands
+    - fan
+    - spread fingers
+    -
+Fingers
+Legs
+    - IK/FK switching
+    - bendy bones
+    - elbow slide
+Feet
+Toes
+Hind Leg
+Tail
+
+
+
+Rigging tools checklist (excluding build scripts, as these are for ideal build scripts):
+- create locator at center of selected components script
+- create joint at locator script
+- bone mirror script
+- convert rotation to jointOrient script
+- convert jointOrient to rotation script
+- CoplanarJointOrient tool
+- reset bindPose script
+- ScSaveWeights toolhts
+- StudioLibrary toolset for checking weig
+-
+
+Need/want to write:
+- average out weights of an edge loop selection
+- fbx source finder
+- ribbon builder
+- match seam vert normals
+- prune weights past max influences?
+- better skinning UI
+- aim constraint (first in pymel then in api)
+- HH menu updates (individual constraint menu options)
+
+
+Reach
+- weight exporter
+- coplanar checker/setter
+- weight hammer (?) if can constrain to max influences

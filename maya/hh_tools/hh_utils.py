@@ -465,16 +465,17 @@ def openFileDialogInSceneDir():
     multipleFilters = "Maya Files (*.ma *.mb);;Maya ASCII (*.ma);;Maya Binary (*.mb);;All Files (*.*)"
     fileOpen = pm.fileDialog2(fileFilter=multipleFilters, dialogStyle=2, okc="Open", fileMode=1, caption="Open",
                               dir=pm.sceneName().dirname())     #.truepath()
-
+    curr_open_file = pm.sceneName().truepath()
+    filetype = 'mayaAscii' if os.path.splitext(fileOpen[0])[-1] == '.ma' else 'mayaBinary'
     if fileOpen:
         try:
             pm.newFile()
             pm.openFile(fileOpen, f=0)
-            filetype = 'mayaAscii' if os.path.splitext(fileOpen)[-1] == '.ma' else 'mayaBinary'
-            mel.eval('addRecentFile("{0}", "{1}")'.format(fileOpen.capitalize(), filetype))
+            mel.eval('addRecentFile("{0}", "{1}")'.format(fileOpen[0].capitalize(), filetype))
         except:
-            print('*** openFileDialogInSceneDir exception ***')
-            s = pm.confirmDialog(title='Save changes', message='Save changes to {0} ?'.format(pm.sceneName().truepath()),
+            print(f'*** openFileDialogInSceneDir exception {fileOpen}***')
+            mel.eval('addRecentFile("{0}", "{1}")'.format(fileOpen[0].capitalize(), filetype))
+            s = pm.confirmDialog(title='Save changes', message=f'Save changes to {curr_open_file}?',
                                  button=['Save', "Don't Save", 'Cancel'], defaultButton='Save', cancelButton='Cancel',
                                  dismissString='No')
             if s == 'Save':
@@ -852,10 +853,10 @@ def change_aim_dir(object, defaultdir, newdir):
     rotaxis = defaultdir ^ newdir
 
     if rotaxis == api.MVector(0, 0, 0):
-        object.setScale(api.MVector(object.scale()) * -1)
+        quatrot = api.MQuaternion(rotangle, api.MVector(0, 0, 1))
     else:
         quatrot = api.MQuaternion(rotangle, rotaxis)
-        object.rotateBy(quatrot, om.MSpace.kTransform)
+    object.rotateBy(quatrot, om.MSpace.kTransform)
 
 
 def get_package_dir(packagename):
